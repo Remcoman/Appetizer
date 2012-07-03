@@ -1,0 +1,6 @@
+{
+	"port" : 8000,
+	"main" : "js/index.js",
+	"less" : "style/index.less",
+    "dependencies" : []
+}
