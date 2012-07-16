@@ -11,7 +11,7 @@ MYDIR=`dirname "$0"`
 
 ACTION="$1"
 if [ ! "$ACTION" ]; then
-	ACTION="start"
+	ACTION="help"
 fi
 
 case $ACTION in
@@ -25,10 +25,26 @@ case $ACTION in
 	;;
 
 	"start" )
-		node "$MYDIR/lib/server.js" start "$TARGETDIR"
+		node "$MYDIR/lib/server.js" start "$TARGETDIR/src"
 	;;
 
 	"stop" )
-		node "$MYDIR/lib/server.js" stop "$TARGETDIR"
+		node "$MYDIR/lib/server.js" stop "$TARGETDIR/src"
+	;;
+	
+	"create" )
+		cp "$MYDIR/config.json" "$TARGETDIR/"
+		mkdir "$TARGETDIR/src"
+		mkdir "$TARGETDIR/build"
+	;;
+	
+	"help" )
+		echo
+		echo "Appetizer"
+		echo
+		echo "Usage:"
+		echo "	appetizer start			Start the development server"
+		echo "	appetizer stop			Stop the development server"
+		echo "	appetizer build			Build and minify all js and less files"
 	;;
 esac
