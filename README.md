@@ -7,7 +7,7 @@ Step 1: installation
 2. Clone this repository to a central location (for example /appetizer)
 3. Source the appetizer.sh in your bash shell:
 
-	. /appetizer/appetizer.sh
+    . /appetizer/appetizer.sh
 
 Step 2: development
 ====
@@ -15,11 +15,11 @@ Step 2: development
 2. cd to your project directory
 3. Create your project:
 
-	appetizer make
+    appetizer make
 
 4. Start the development server:
 
-	appetizer start
+    appetizer start
 
 5. Put your Less style in src/styles/index.less
 6. Put your JavaScript in src/scripts/index.js
@@ -32,7 +32,7 @@ Step 3: deployment
 2. cd to your project directory
 3. Build it:
 
-	appetizer build
+    appetizer build
 
 4. Your code is in the build folder (CSS, JavaScript is minified)
 5. That's all
