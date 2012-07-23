@@ -44,4 +44,5 @@ For JavaScript you can use the CommonJS module format to 'require' other js file
 
 TODO
 ====
-Add support for a template language like Jade?
+1. ~Add support for a template language like Jade?~ Done
+2. Add pre-build template constants?
