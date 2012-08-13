@@ -1,7 +1,7 @@
 {
 	"port" : 8000,
 	"main" : "scripts/index.js",
-	"less" : "style/index.less",
-	"copy" : ["images"],
+	"style" : "style/index.less",
+	"copy" : ["images", "index.html"],
     "dependencies" : []
 }
