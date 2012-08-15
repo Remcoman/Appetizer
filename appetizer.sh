@@ -25,12 +25,17 @@ appetizer()
 
 	case $ACTION in
 		"build" )
+			MODE="$3"
+			if [ ! "$MODE" ]; then
+				MODE = "release"
+			fi
+
 			if [ ! -d "$TARGET_DIR/build" ]; then
 			    mkdir "$TARGET_DIR/build"
 			fi
 			rm -r "$TARGET_DIR/build"
 			mkdir "$TARGET_DIR/build"
-			node "$APPETIZER_DIR/lib/build.js" "$TARGET_DIR"
+			node "$APPETIZER_DIR/lib/build.js" "$TARGET_DIR" "$MODE"
 		;;
 
 		"start" )
