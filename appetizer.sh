@@ -1,4 +1,4 @@
-#!/bin/bash
+#/bin/sh
 
 #This file is heavily inspired by nvm.sh at https://github.com/creationix/nvm/blob/master/nvm.sh
 
@@ -23,20 +23,32 @@ appetizer()
 		TARGET_DIR=`pwd`
 	fi
 
-	case $ACTION in
-		"build" )
-			MODE="$3"
-			if [ ! "$MODE" ]; then
-				MODE = "release"
-			fi
+	if [ "$ACTION" = "build" ]; then
+		ACTION="build_release"
+	fi
 
+	echo $TARGET_DIR
+
+	case $ACTION in
+		"build_release" )
 			if [ ! -d "$TARGET_DIR/build" ]; then
 			    mkdir "$TARGET_DIR/build"
 			fi
+
 			rm -r "$TARGET_DIR/build"
 			mkdir "$TARGET_DIR/build"
-			node "$APPETIZER_DIR/lib/build.js" "$TARGET_DIR" "$MODE"
+			node "$APPETIZER_DIR/lib/build.js" "$TARGET_DIR" release
 		;;
+
+		"build_debug" )
+            if [ ! -d "$TARGET_DIR/build" ]; then
+                mkdir "$TARGET_DIR/build"
+            fi
+
+            rm -r "$TARGET_DIR/build"
+            mkdir "$TARGET_DIR/build"
+            node "$APPETIZER_DIR/lib/build.js" "$TARGET_DIR" debug
+        ;;
 
 		"start" )
 			node "$APPETIZER_DIR/lib/server.js" start "$TARGET_DIR"
@@ -64,7 +76,8 @@ appetizer()
 				mkdir "$TARGET_DIR/src"
 			fi
 
-			cp -r "$APPETIZER_DIR"/src/* "$TARGET_DIR/src"
+			#make copies all template files to the target directory
+			cp -r "$APPETIZER_DIR"/template/* "$TARGET_DIR"
 
 			if [ ! -d "$TARGET_DIR/build" ]; then
 				mkdir "$TARGET_DIR/build"
