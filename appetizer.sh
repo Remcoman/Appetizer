@@ -10,8 +10,8 @@ fi
 appetizer()
 {
 	#the action
-    ACTION="$1"
-    if [ ! "$ACTION" ]; then
+	ACTION="$1"
+	if [ ! "$ACTION" ]; then
     	ACTION="help"
     fi
 
@@ -27,10 +27,8 @@ appetizer()
 		ACTION="build_release"
 	fi
 
-	echo $TARGET_DIR
-
 	case $ACTION in
-		"build_release" )
+		"build-release" )
 			if [ ! -d "$TARGET_DIR/build" ]; then
 			    mkdir "$TARGET_DIR/build"
 			fi
@@ -40,7 +38,7 @@ appetizer()
 			node "$APPETIZER_DIR/lib/build.js" "$TARGET_DIR" release
 		;;
 
-		"build_debug" )
+		"build-debug" )
             if [ ! -d "$TARGET_DIR/build" ]; then
                 mkdir "$TARGET_DIR/build"
             fi
@@ -89,10 +87,11 @@ appetizer()
 			echo "Appetizer"
 			echo
 			echo "Usage:"
-			echo "	appetizer make			Creates a project according to a template"
-			echo "	appetizer start			Start the development server"
-			echo "	appetizer stop			Stop the development server"
-			echo "	appetizer build			Build and minify all js and less files"
+			echo "	appetizer make				Creates a project according to a template"
+			echo "	appetizer start				Start the development server"
+			echo "	appetizer stop				Stop the development server"
+			echo "	appetizer build-debug		Build all js and less files into the 'build' folder of the project. Keeps debugging code"
+			echo "	appetizer build-release		Like build-debug only it obfuscates all js en minifies the css"
 		;;
 
 		* )
