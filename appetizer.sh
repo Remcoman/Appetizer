@@ -12,8 +12,8 @@ appetizer()
 	#the action
 	ACTION="$1"
 	if [ ! "$ACTION" ]; then
-    		ACTION="help"
-    	fi
+		ACTION="help"
+	fi
 
 	#the target directory to start all actions in
 	TARGET_DIR="$2"
@@ -30,7 +30,7 @@ appetizer()
 	case $ACTION in
 		"build-release" )
 			if [ ! -d "$TARGET_DIR/build" ]; then
-			    mkdir "$TARGET_DIR/build"
+				mkdir "$TARGET_DIR/build"
 			fi
 
 			rm -r "$TARGET_DIR/build"
@@ -39,14 +39,14 @@ appetizer()
 		;;
 
 		"build-debug" )
-            		if [ ! -d "$TARGET_DIR/build" ]; then
-                		mkdir "$TARGET_DIR/build"
-            		fi
+			if [ ! -d "$TARGET_DIR/build" ]; then
+				mkdir "$TARGET_DIR/build"
+			fi
 
-            		rm -r "$TARGET_DIR/build"
-            		mkdir "$TARGET_DIR/build"
-            		node "$APPETIZER_DIR/lib/build.js" "$TARGET_DIR" debug
-        	;;
+			rm -r "$TARGET_DIR/build"
+			mkdir "$TARGET_DIR/build"
+			node "$APPETIZER_DIR/lib/build.js" "$TARGET_DIR" debug
+		;;
 
 		"start" )
 			node "$APPETIZER_DIR/lib/server.js" start "$TARGET_DIR"
@@ -59,13 +59,13 @@ appetizer()
 		"make" )
 			if [ "$(ls $TARGET_DIR)" ]; then
 				while true; do
-                    			read -p "Directory not emty. Do you really want to make here? " yn
-                    			case $yn in
-                        			[Yy]* ) break;;
-                        			[Nn]* ) return;;
-                        			* ) echo "Please answer yes or no.";;
-                    			esac
-                		done
+					read -p "Directory not emty. Do you really want to make here? " yn
+					case $yn in
+						[Yy]* ) break;;
+						[Nn]* ) return;;
+						* ) echo "Please answer yes or no.";;
+					esac
+				done
 			fi
 
 			cp "$APPETIZER_DIR/config.json" "$TARGET_DIR"

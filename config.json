@@ -3,5 +3,6 @@
 	"main" : "scripts/index.js",
 	"style" : "style/index.less",
 	"copy" : ["images", "index.html"],
+	"proxies" : {},
     "dependencies" : []
 }
