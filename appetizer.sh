@@ -80,6 +80,8 @@ appetizer()
 			if [ ! -d "$TARGET_DIR/build" ]; then
 				mkdir "$TARGET_DIR/build"
 			fi
+
+			echo "Project made in $TARGET_DIR"
 		;;
 
 		"help" )
