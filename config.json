@@ -4,5 +4,6 @@
 	"style" : "style/index.less",
 	"copy" : ["images", "index.html"],
 	"proxies" : {},
-    "dependencies" : []
+    "dependencies" : [],
+	"reloaderpaths" : ["style"]
 }
