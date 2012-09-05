@@ -49,7 +49,7 @@ appetizer()
 		;;
 
 		"start" )
-			node "$APPETIZER_DIR/lib/server.js" start "$TARGET_DIR"
+			sudo node "$APPETIZER_DIR/lib/server.js" start "$TARGET_DIR"
 		;;
 
 		"stop" )
