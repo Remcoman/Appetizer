@@ -49,7 +49,11 @@ appetizer()
 		;;
 
 		"start" )
-			sudo node "$APPETIZER_DIR/lib/server.js" start "$TARGET_DIR"
+			node "$APPETIZER_DIR/lib/server.js" start "$TARGET_DIR"
+			if [ $? = 3 ]; then
+				echo "Trying again with sudo..."
+				sudo node "$APPETIZER_DIR/lib/server.js" start "$TARGET_DIR"
+			fi
 		;;
 
 		"stop" )
