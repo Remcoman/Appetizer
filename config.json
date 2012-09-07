@@ -2,7 +2,7 @@
 	"port" : 8000,
 	"main" : "scripts/index.js",
 	"style" : "style/index.less",
-	"copy" : ["images", "index.html"],
+	"copy" : ["index.html"],
 	"proxies" : {},
     "dependencies" : [],
 	"reloaderpaths" : ["style"]
