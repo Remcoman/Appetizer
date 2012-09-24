@@ -5,8 +5,8 @@
 	"copy" : ["index.html"],
 	"proxies" : {},
     "dependencies" : [],
-	"obfuscate_releasebuild" : true,
-	"exclude_from_copy" : ["*.svn", "*.DS_Store", "*.git"],
+	"obfuscate_releasebuild" : false,
+	"exclude_from_copy" : ["*.svn", "*.DS_Store"],
 	"path_vars" : {},
 	"reloader_paths" : ["style"]
 }
