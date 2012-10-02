@@ -6,6 +6,5 @@
 	"proxies" : {},
     "dependencies" : [],
 	"exclude_from_copy" : ["*.svn", "*.DS_Store"],
-	"path_vars" : {},
 	"reloader_paths" : ["style"]
 }
