@@ -44,5 +44,5 @@ For JavaScript you can use the CommonJS module format to 'require' other js file
 
 TODO
 ====
-1. ~Add support for a template language like Jade?~ Done
-2. Add pre-build template constants?
+1. Add unit test support using jsTestDriver before build
+2. Add locale options
