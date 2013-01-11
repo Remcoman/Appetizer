@@ -8,21 +8,34 @@
 Bootstrap file
 */
 
+/**
+ * Creates a object which acts as a wrapper around el
+ *
+ * Returns a object with a forEach and isEmpty function
+ * The forEach function calls a callback for each matched element
+ * The isEmpty returns true if there are no matched elements. Otherwise it returns false
+ *
+ * el can be a selector, DOMElement or jQuery|Zepto object
+ *
+ * @param {String|Node|JQuery} el
+ * @param {Boolean} multiple
+ * @return {Object}
+ */
 var getElementWrapper = function (el, multiple) {
    var $ = window.jQuery || window.Zepto;
 
    var items;
 
-   if($) {
+   if($) { //use jQuery to get the element and return a wrapper
        items = $(el);
 
        if(!multiple) {
-           items = items.filter(":first-child");
+           items = items.first(); //give back the first item
        }
 
        return {
            forEach : function (callback) {
-               items.each(function (index, value) {
+               items.each(function (index, value) { //index, value is reversed from standard forEach
                    callback(value);
                });
            },
@@ -34,16 +47,16 @@ var getElementWrapper = function (el, multiple) {
 
    items = [];
 
-   if(typeof el === "object" && el.nodeType == 1) {
+   if(typeof el === "object" && el.nodeType == 1) { //el is of type DOMElement
        items.push(el);
    }
-   else if(typeof el === "string") {
-       if(el.charAt(0) == "#") {
+   else if(typeof el === "string") { //el is selector
+       if(el.charAt(0) == "#") { //simple id
            el = document.getElementById( el.substr(1) );
            if(el)
               items.push( el );
        }
-       else if(typeof document.querySelector === "function") {
+       else if(typeof document.querySelector === "function") { //complex selector
            if(multiple) {
                items = Array.prototype.slice.call(document.querySelectorAll(el), 0);
            }
@@ -53,6 +66,9 @@ var getElementWrapper = function (el, multiple) {
                    items.push( el );
            }
        }
+       else {
+           throw new Error("Selector was passed as el but no functionality was available in the browser to get the actual element");
+       }
    }
 
    return {
@@ -60,7 +76,7 @@ var getElementWrapper = function (el, multiple) {
            return items.length == 0;
        },
 
-       forEach : typeof items.forEach === "function" ? items.forEach : function (callback) {
+       forEach : typeof items.forEach === "function" ? items.forEach.bind(items) : function (callback) {
            for(var i= 0, len = items.length;i < len;i++) {
                callback(items[i]);
            }

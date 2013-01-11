@@ -1,6 +1,6 @@
 /* your JavaScript */
 
-var bootstrap = require('bootstrap');
+var bootstrap = require('./bootstrap');
 
 bootstrap(function (el, options) {
     console.log("Hello world!");
