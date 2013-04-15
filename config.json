@@ -1,7 +1,8 @@
 {
 	"port" : 8000,
-	"main" : "scripts/index.js",
-	"style" : "style/index.less",
+	"main" : "js/index.js",
+	"source_map" : "js/source_map.js.map",
+	"style" : "css/index.less",
 	"copy" : ["index.html"],
 	"proxies" : {},
     "dependencies" : [],
